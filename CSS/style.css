@@ -1,0 +1,514 @@
+/* ----------------------------容器样式---------------------------- */
+.base-container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 2220px;
+  margin: 0 auto;
+  background-color: var(--sys-page-background-fill);
+  min-height: 100vh;
+}
+/* ----------------------------页头样式---------------------------- */
+/* 
+ * .page-header - 页面头部容器
+ * 是什么：页面顶部的主要头部区域容器
+ * 有什么用：作为整个页面头部的包装器，提供黑色背景、圆角边框、内边距，
+ *          使用flex布局在水平方向上分配内容和品牌信息的空间
+ */
+.page-header {
+  background: #000000;
+  border-radius: 4px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+/* 
+ * .page-header-content - 页面头部内容区域
+ * 是什么：头部左侧的内容容器，包含标题和描述
+ * 有什么用：垂直排列头部的主要内容（标题和描述），
+ *          提供统一的间距和左对齐方式，允许弹性伸缩以适应剩余空间
+ */
+.page-header-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  align-items: flex-start;
+  flex: 1; /* 允许内容区域占用剩余空间 */
+  min-width: 0; /* 防止flex子项溢出 */
+}
+/* 
+ * .page-header-title - 页面头部标题容器
+ * 是什么：包含中英文标题的容器
+ * 有什么用：水平排列中英文标题，设置大字号（48px）和白色文字，
+ *          提供标题间的间距和垂直居中对齐
+ */
+.page-header-title {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  font-size: 48px;
+  color: white;
+  line-height: normal;
+}
+/* 
+ * .page-header-title-cn - 页面头部中文标题
+ * 是什么：页面标题的中文部分
+ * 有什么用：为中文标题设置专用的中文字体（PingFang SC）和粗体字重，
+ *          确保中文显示效果最佳
+ */
+.page-header-title-cn {
+  font-family: var(--typography-head-48-font-family, "PingFang SC", sans-serif);
+  font-weight: 600;
+}
+/* 
+ * .page-header-title-en - 页面头部英文标题
+ * 是什么：页面标题的英文部分
+ * 有什么用：为英文标题设置专用的英文字体（Roboto）和粗体字重，
+ *          确保英文显示效果最佳
+ */
+.page-header-title-en {
+  font-family: "Roboto", sans-serif;
+  font-weight: 600;
+}
+
+/* 
+ * .page-header-desc - 页面头部描述文字
+ * 是什么：位于标题下方的描述文本
+ * 有什么用：显示页面的详细描述信息，使用较小字号（20px）和浅色文字，
+ *          自适应宽度以便为右侧品牌信息留出空间
+ */
+.page-header-desc {
+  font-family: var(--typography-body-20-font-family, "PingFang SC", sans-serif);
+  font-weight: 400;
+  font-size: 20px;
+  color: var(--文本-light-4, #dcdcde);
+  line-height: normal;
+  width: 100%; /* 使用100%宽度，由父容器的flex布局控制实际宽度 */
+}
+
+/* 
+ * .page-header-brand - 页面头部品牌信息区域
+ * 是什么：位于头部右侧的品牌标识区域
+ * 有什么用：垂直排列品牌的中英文信息，右对齐显示，
+ *          使用flex-shrink防止压缩，确保内容不会被挤压
+ */
+.page-header-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-end;
+  justify-content: center;
+  color: white;
+  flex-shrink: 0; /* 防止品牌区域被压缩 */
+  min-width: max-content; /* 确保宽度足够容纳内容 */
+  text-align: right;
+}
+/* 
+ * .page-header-brand-cn - 页面头部品牌中文名称
+ * 是什么：品牌信息的中文部分
+ * 有什么用：显示品牌的中文名称，使用中等字重（500）和适中字号（20px），
+ *          确保品牌中文信息清晰可读，不换行显示
+ */
+.page-header-brand-cn {
+  font-family: var(--typography-body-20-medium-font-family, "PingFang SC", sans-serif);
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 20px;
+  white-space: nowrap; /* 防止文字换行 */
+}
+/* 
+ * .page-header-brand-en - 页面头部品牌英文名称
+ * 是什么：品牌信息的英文部分
+ * 有什么用：显示品牌的英文名称，使用较轻字重（200）和较大字号（30px），
+ *          营造现代简约的品牌形象，不换行显示
+ */
+.page-header-brand-en {
+  font-family: "Roboto", sans-serif;
+  font-weight: 200;
+  font-size: 30px;
+  line-height: 30px;
+  white-space: nowrap; /* 防止文字换行 */
+}
+
+/* 页头响应式设计 */
+@media (max-width: 768px) {
+  .page-header {
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  
+  .page-header-title {
+    font-size: 32px;
+    gap: 12px;
+  }
+  
+  .page-header-desc {
+    font-size: 16px;
+    width: 100%;
+  }
+  
+  .page-header-brand {
+    width: 100%;
+    align-items: flex-start;
+    text-align: right;
+  }
+  
+  .page-header-brand-cn {
+    font-size: 16px;
+  }
+  
+  .page-header-brand-en {
+    font-size: 24px;
+  }
+}
+
+/* ----------------------------分组标题样式---------------------------- */
+/* 状态分组标题 */
+.section-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin: 16px 0 16px 0;
+  padding: 16px;
+  background: #fff;
+  border-radius: 8px;
+}
+
+/* .button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 0px;
+} 未知作用*/
+
+/* Figma三列布局样式，作用于三列一行的区域 */
+.figma-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+/* 单列区域，内行column-title和size-row */
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;/* 控制column-title和size-row之间的间距 */
+}
+/* 单列的灰色底标题，如primary fill */
+.column-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  padding: 12px;
+  background: #f0f0f0;
+  border-radius: 6px;
+  margin-bottom: 0px;
+}
+
+.status-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.status-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 8px;
+}
+/* 单列区域的实际内容，如单列标题为“primary fill”，则展示该分类下的不同尺寸的按钮 */
+.size-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.size-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.base,
+.base * {
+  box-sizing: border-box;
+}
+.base {
+  background: var(--sys-primary-default, #4d83ff);
+  border-radius: var(--radius-large, 8px);
+  padding: 16px 10px 16px 10px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  position: relative;
+}
+
+/* Figma 精确尺寸 */
+.base.size-xl {
+  width: 355px;
+  height: 48px;
+}
+
+.base.size-l {
+  width: 327px;
+  height: 44px;
+}
+
+.base.size-m {
+  min-width: 72px;
+  height: 28px;
+  width: fit-content;
+}
+
+.base.size-s {
+  min-width: 68px;
+  height: 24px;
+  width: fit-content;
+}
+
+.base.size-xs {
+  min-width: 52px;
+  height: 16px;
+  width: fit-content;
+}
+.base__button-text {
+  color: var(--sys-text-white-h1, #ffffff);
+  text-align: left;
+  font-family: var(
+    --typography-head-16-sub-font-family,
+    "PingFangSc-Medium",
+    sans-serif
+  );
+  font-size: var(--typography-head-16-sub-font-size, 16px);
+  line-height: var(--typography-head-16-sub-line-height, 18px);
+  font-weight: var(--typography-head-16-sub-font-weight, 500);
+  position: relative;
+  white-space: nowrap;
+}
+/* variant styles */
+.base.size-xl.status-loading,
+.base.size-l.status-loading {
+  gap: 8px;
+}
+.base.size-xl .base__loading,
+.base.size-l .base__loading {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  position: relative;
+}
+.base.size-xl .base__item,
+.base.size-l .base__item {
+  height: auto;
+  position: absolute;
+  left: 1.88px;
+  top: 1.88px;
+  overflow: visible;
+}
+.base.size-l.status-loading.type-primary-fill {
+  padding: 12px 0px 12px 0px;
+}
+.base.status-inactive.type-primary-fill {
+  background: var(--sys-primary-inactive, #b2caff);
+}
+.base.status-disable.type-primary-fill,
+.base.status-disable.type-secondary-outline {
+  background: var(--sys-primary-disable, #f3f4f5);
+}
+.base.status-disable .base__button-text {
+  color: var(--sys-text-black-h4, #d2d3d6);
+}
+.base.type-primary-outline {
+  border-style: solid;
+  border-width: 0.5px;
+  background: unset;
+}
+.base.size-xl.type-primary-outline,
+.base.size-xl.type-secondary-outline,
+.base.size-l.status-default.type-primary-fill,
+.base.size-l.status-inactive.type-primary-fill,
+.base.size-l.status-disable.type-primary-fill {
+  padding: 16px 0px 16px 0px;
+}
+.base.status-default.type-primary-outline,
+.base.status-loading.type-primary-outline {
+  border-color: var(--sys-primary-default, #4d83ff);
+}
+.base.size-xl.status-default.type-primary-outline,
+.base.size-xl.status-default.type-secondary-outline {
+  gap: 2px;
+}
+.base.status-default.type-primary-outline .base__button-text,
+.base.status-loading.type-primary-outline .base__button-text {
+  color: var(--sys-primary-default, #4d83ff);
+}
+.base.status-inactive.type-primary-outline {
+  border-color: var(--sys-primary-inactive, #b2caff);
+}
+.base.status-inactive.type-primary-outline .base__button-text {
+  color: var(--sys-primary-inactive, #b2caff);
+}
+.base.size-xl.status-disable.type-primary-outline,
+.base.size-l.status-disable.type-primary-outline {
+  border-color: var(--sys-text-black-h4, #d2d3d6);
+}
+.base.type-secondary-outline {
+  border-style: solid;
+  border-color: var(--sys-wire-divider-dark, #ededee);
+}
+.base.status-default.type-secondary-outline,
+.base.status-inactive.type-secondary-outline,
+.base.status-loading.type-secondary-outline {
+  background: var(--white, #ffffff);
+  border-width: 0.5px;
+}
+.base.type-secondary-outline .base__button-text {
+  text-align: center;
+}
+.base.status-default.type-secondary-outline .base__button-text,
+.base.status-loading.type-secondary-outline .base__button-text {
+  color: var(--sys-text-black-h1, #1e2533);
+}
+.base.status-inactive.type-secondary-outline .base__button-text {
+  color: var(--sys-text-black-h3, #a4a8ac);
+}
+.base.size-xl.status-disable.type-secondary-outline,
+.base.size-l.status-disable.type-secondary-outline {
+  border-width: 1px;
+}
+.base.size-l.status-default {
+  gap: 2px;
+}
+.base.size-l.type-primary-outline,
+.base.size-l.type-secondary-outline {
+  padding: 16px 117px 16px 117px;
+}
+.base.size-m {
+  border-radius: var(--radius-default, 4px);
+  padding: 0px 12px 0px 12px;
+}
+.base.size-m .base__button-text,
+.base.size-s .base__button-text {
+  font-family: var(
+    --typography-body-12-strong-font-family,
+    "PingFangSc-Medium",
+    sans-serif
+  );
+  font-size: var(--typography-body-12-strong-font-size, 12px);
+  line-height: var(--typography-body-12-strong-line-height, 14px);
+  font-weight: var(--typography-body-12-strong-font-weight, 500);
+}
+/* M尺寸宽度已在上面统一设置为72px */
+.base.size-m.status-disable.type-primary-outline {
+  border-color: var(--sys-wire-divider-dark, #ededee);
+}
+.base.size-m.status-disable.type-secondary-outline {
+  border-width: 0.5px;
+}
+.base.size-s {
+  border-radius: var(--radius-default, 4px);
+}
+.base.size-s.status-default,
+.base.size-s.status-inactive,
+.base.size-s.status-disable.type-primary-fill,
+.base.size-s.status-loading {
+  padding: 0px 10px 0px 10px;
+}
+/* S尺寸宽度已在上面统一设置为68px */
+.base.size-s.status-disable.type-primary-outline {
+  border-color: var(--sys-wire-divider-dark, #ededee);
+  padding: 0px 12px 0px 12px;
+}
+.base.size-s.status-disable.type-secondary-outline {
+  border-width: 0.5px;
+  padding: 0px 10px 0px 10px;
+}
+.base.size-xs {
+  border-radius: var(--radius-small, 2px);
+}
+.base.size-xs.status-default,
+.base.size-xs.status-inactive,
+.base.size-xs.status-disable.type-primary-fill,
+.base.size-xs.status-loading {
+  padding: 0px 6px 0px 6px;
+}
+.base.size-xs .base__button-text {
+  font-family: var(
+    --typography-body-10-strong-font-family,
+    "PingFangSc-Medium",
+    sans-serif
+  );
+  font-size: var(--typography-body-10-strong-font-size, 10px);
+  line-height: var(--typography-body-10-strong-line-height, 11px);
+  font-weight: var(--typography-body-10-strong-font-weight, 500);
+}
+.base.size-xs.type-primary-fill .base__button-text {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+/* XS尺寸按钮移除gap以匹配Figma设计 */
+.base.size-xs {
+  gap: 0px;
+}
+
+/* Loading 动画样式 - 使用Figma提供的精确SVG */
+.base__loading {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.base__loading::before {
+  content: '';
+  width: 20px;
+  height: 20px;
+  display: block;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  animation: loading-spin 1s linear infinite;
+}
+
+/* Primary Fill 按钮使用 onPrimary=true SVG */
+.base.type-primary-fill.status-loading .base__loading::before {
+  background-image: url('../SVG/on primary=true.svg');
+}
+
+/* Primary Outline 和 Secondary Outline 按钮使用 onPrimary=false SVG */
+.base.type-primary-outline.status-loading .base__loading::before,
+.base.type-secondary-outline.status-loading .base__loading::before {
+  background-image: url('../SVG/on primary=false.svg');
+}
+
+@keyframes loading-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.base.size-xs.status-disable.type-primary-outline {
+  border-color: var(--sys-wire-divider-dark, #ededee);
+  padding: 0px 12px 0px 12px;
+}
+.base.size-xs.status-disable.type-secondary-outline {
+  border-width: 0.5px;
+  padding: 0px 6px 0px 6px;
+}

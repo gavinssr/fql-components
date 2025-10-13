@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"workbench.colorTheme": "Quiet Light",
+		"fiveServer.browser": [],
+		"liveServer.settings.multiRootWorkspaceName": "figma_toCode",
+		"liveServer.settings.port": 5501,
+		"trae.enableCodelens": {
+			"enableInlineDocumentation": false,
+			"enableInlineUnitTest": false,
+			"enableInlineExplain": false,
+			"enableExploreIde": false
+		}
+	}
+}
