@@ -1,0 +1,35 @@
+{
+  "name": "fenqile-weex-components",
+  "version": "1.0.0",
+  "description": "分期乐 Weex 组件库 - 基于设计规范的移动端组件",
+  "main": "entry.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "weex",
+    "components",
+    "fenqile",
+    "button",
+    "mobile",
+    "ui"
+  ],
+  "author": "Fenqile FE Team",
+  "license": "MIT",
+  "peerDependencies": {
+    "vue": "^2.6.0",
+    "weex-vue-render": "^1.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "files": [
+    "assets",
+    "components",
+    "mixins",
+    "styles",
+    "entry.js",
+    "README.md"
+  ]
+}
